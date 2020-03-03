@@ -7,7 +7,7 @@ const geocode = require('../src/utils/geocode');
 const forecast = require('../src/utils/forecast');
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -84,21 +84,6 @@ app.get('/weather', (req, res) => {
         address,
       });
     });
-  });
-});
-
-app.get('/products', (req, res) => {
-  if (!req.query.search) {
-    return res.send({
-      error: 'You must provide a search term',
-
-    });
-  }
-
-  console.log(req.query.search);
-
-  res.send({
-    products: [],
   });
 });
 
